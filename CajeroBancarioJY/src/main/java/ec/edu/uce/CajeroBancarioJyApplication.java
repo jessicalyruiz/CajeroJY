@@ -80,9 +80,15 @@ public class CajeroBancarioJyApplication implements CommandLineRunner{
 				
 				
 				//Consultar cuentas
+				List<CuentaBancaria> cuentasConsulta= this.cuentaService.buscarCuentaCedula("1708");
+				for (CuentaBancaria c : cuentasConsulta) {
+					LOG.info(c.toString());
+					LOG.info("cliente "+c.getCuentaHabiente());
+				}
 				
-				LOG.info(cuentaService.buscarCuentaCedula("1708").toString());
+				//Retirar dinero
 				
+				this.cuentaService.retirarDinero("78-96", new BigDecimal(100.5));
 				
 				//Consultar saldo
 				

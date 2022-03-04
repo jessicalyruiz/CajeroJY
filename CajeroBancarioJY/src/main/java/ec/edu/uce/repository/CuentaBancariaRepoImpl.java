@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import ec.edu.uce.modelo.CuentaBancaria;
@@ -18,7 +20,9 @@ import ec.edu.uce.modelo.CuentaBancaria;
 @Repository
 @Transactional
 public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo {
+	private static final Logger LOG = (Logger) LoggerFactory.getLogger(CuentaBancariaRepoImpl.class);
 
+	
 	@PersistenceContext
 	private EntityManager entityManager;
 	
@@ -48,13 +52,17 @@ public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo {
 	}
 
 	@Override
-	public CuentaBancaria buscarCuentaCedula(String cedula) {
+	public List<CuentaBancaria> buscarCuentaCedula(String cedula) {
 		TypedQuery<CuentaBancaria> myQuery=this.entityManager.createQuery("SELECT c FROM CuentaBancaria c JOIN  c.cuentaHabiente ch WHERE ch.cedula=:valor", CuentaBancaria.class);
 		myQuery.setParameter("valor", cedula);
 	
 		//carga de relacionamientos
+		List<CuentaBancaria> cuentas=myQuery.getResultList();
+		for (CuentaBancaria c : cuentas) {
+			LOG.info("cuenta habiente: "+c.getCuentaHabiente());
+		}
 		
-		return myQuery.getSingleResult();// TODO Auto-generated method stub
+		return cuentas;// TODO Auto-generated method stub
 		
 	}
 
