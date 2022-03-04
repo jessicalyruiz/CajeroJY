@@ -69,7 +69,7 @@ public class CajeroBancarioJyApplication implements CommandLineRunner{
 				cliente.setCuentas(cuentasCliente);
 				
 				List<CuentaBancaria> cuentasCliente2=new ArrayList<>();
-				cuentasCliente.add(cuenta2);
+				cuentasCliente2.add(cuenta2);
 				cliente2.setCuentas(cuentasCliente2);
 				
 //				cuantaHabienteService.create(cliente);
