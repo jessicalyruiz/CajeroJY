@@ -14,4 +14,6 @@ public interface ICuentaBancariaRepo {
 	
 	public List<CuentaBancaria>  buscarCuentaCedula(String cedula);
 	public CuentaBancaria buscarNumeroCuenta(String numero);
+	
+	public List<CuentaBancaria> listaCuentas();
 }

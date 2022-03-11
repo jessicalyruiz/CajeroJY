@@ -73,4 +73,15 @@ public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo {
 		return myQuery.getSingleResult();
 	}
 
+	@Override
+	public List<CuentaBancaria> listaCuentas() {
+		TypedQuery<CuentaBancaria> myQuery=this.entityManager.createQuery("Select c From CuentaBancaria c", CuentaBancaria.class);
+		List<CuentaBancaria> listaCuentas=myQuery.getResultList();
+		for (CuentaBancaria cuentaBancaria : listaCuentas) {
+			LOG.info("cuenta habiente: "+cuentaBancaria.getCuentaHabiente());
+			LOG.info("retiros: "+cuentaBancaria.getRetiros());
+		}
+		return listaCuentas;
+	}
+
 }

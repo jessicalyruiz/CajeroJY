@@ -81,4 +81,10 @@ public class CuentaBancariaService implements ICuentaBancariaService{
 		historicoService.create(retiro);
 		
 	}
+
+	@Override
+	public List<CuentaBancaria> listaCuentas() {
+		// TODO Auto-generated method stub
+		return this.cuentaRepo.listaCuentas();
+	}
 }

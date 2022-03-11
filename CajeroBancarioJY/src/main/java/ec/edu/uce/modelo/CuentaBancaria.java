@@ -36,7 +36,7 @@ public class CuentaBancaria {
 	@Column(name = "cuba_tipo")
 	private String tipo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "cuba_fk_cuanta_habiente")
 	private CuentaHabiente cuentaHabiente;
 

@@ -18,5 +18,6 @@ public interface ICuentaBancariaService {
 	public BigDecimal consultarSaldo(String numero);
 	
 	public void retirarDinero(String numeroCuenta,BigDecimal valorRetirar);
-	
+
+	public List<CuentaBancaria> listaCuentas() ;
 }

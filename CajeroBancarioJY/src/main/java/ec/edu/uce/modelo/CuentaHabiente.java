@@ -36,7 +36,7 @@ public class CuentaHabiente {
 	@Column(name = "cuha_cedula")
 	private String cedula;
 	
-	@OneToMany(mappedBy = "cuentaHabiente")
+	@OneToMany(mappedBy = "cuentaHabiente",cascade = CascadeType.ALL)
 	private List<CuentaBancaria> cuentas;
 	
 	
@@ -97,7 +97,7 @@ public class CuentaHabiente {
 	@Override
 	public String toString() {
 		return "CuentaHabiente [id=" + id + ", apellido=" + apellido + ", nombre=" + nombre + ", cedula=" + cedula
-				+ ", retiros=" + retiros + "]";
+				+  "]";
 	}
 
 
