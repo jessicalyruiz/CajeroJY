@@ -49,7 +49,7 @@ public class HistoricoRetitoServiceImpl implements IHistoricoRetitoService{
 		// TODO Auto-generated method stub
 		List<HistoricoRetiros>listaRetiros=this.listaRetiros();
 		//filtro por  fecha de retiro y monto de retiro,
-		Stream<HistoricoRetiros> filtro=listaRetiros.stream().filter(h->h.getFecha().isBefore(fechaRetiro)||h.getMonto().compareTo(monto)==1);
+		Stream<HistoricoRetiros> filtro=listaRetiros.stream().filter(h->h.getFecha().isAfter(fechaRetiro)&&h.getMonto().compareTo(monto)==1);
 		Stream<String> formato=filtro.map((h)->{return h.getCuentaHabienteR().getCedula()+"-"+h.getCuentaHabienteR().getNombre()+"-"+h.getCuentaHabienteR().getApellido()+"-$"+h.getMonto()+"-"+h.getFecha().format(DateTimeFormatter.ISO_DATE);});
 		return formato;
 	}
